@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
         res.render("index", { burgers: data });
     });
 });
+
 router.post("/", (req, res)=>{
        burger.insertOne(["name"],[req.body.name], ()=>{
         res.redirect("/");
@@ -18,5 +19,16 @@ router.post("/", (req, res)=>{
 
 
 });
+router.put("/:id", (req, res)=>{
+    burger.updateOne(`devoured = ${req.body.devoured}`, `id = ${req.params.id}`, ()=>{
+        res.redirect("/")
+    })
+
+
+
+
+
+})
+
 
 module.exports = router;

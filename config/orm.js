@@ -43,16 +43,26 @@ var orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length +1);
+        queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        
-        // var queryString = `INSERT INTO ${table} (${cols.toString()}, date) VALUES (${vals}, now())`;
+        // var queryString = "INSERT INTO " + table + " (" + cols +",date)" + " VALUES (" + vals + ", now());";
+
+        // var queryString = `INSERT INTO ${table} (${cols}, date) VALUES (${vals}, now());`
+        console.log(queryString);
         
         connection.query(queryString, vals, (err, data) => {
            
             cb(data);
         });
+    },
+    updateOne: (table, condition, id, cb)=>{
+        var queryString = `UPDATE ${table} SET ${condition} WHERE ${id}`;
+              
+        connection.query(queryString, function (err, data) {
+                       cb(data);
+        });
+    
     }
 }
 

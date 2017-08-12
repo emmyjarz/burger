@@ -8,13 +8,14 @@ var burger = {
  insertOne: (cols, vals, cb)=>{
      orm.insertOne("burgers", cols, vals, (res) =>{
          cb(res);
-         console.log("from burger", res);
+        //  console.log("from burger", res);
      })
+ }, 
+ updateOne: (condition, id, cb)=>{
+     orm.updateOne("burgers", condition, id, (res)=>{
+         cb(res);
+     });
  }
- 
- 
- 
- 
  
 }
 module.exports = burger;
