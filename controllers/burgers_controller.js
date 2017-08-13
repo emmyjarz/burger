@@ -1,3 +1,4 @@
+//Router file, control what to show on the page for each route.
 var express = require("express");
 
 var router = express.Router();
@@ -12,23 +13,15 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res)=>{
-       burger.insertOne(["name"],[req.body.name], ()=>{
+router.post("/", (req, res) => {
+    burger.insertOne(["name", "date"], [req.body.name, new Date()], () => {
         res.redirect("/");
     });
-
-
 });
-router.put("/:id", (req, res)=>{
-    burger.updateOne(`devoured = ${req.body.devoured}`, `id = ${req.params.id}`, ()=>{
+router.put("/:id", (req, res) => {
+    burger.updateOne(`devoured = ${req.body.devoured}`, `id = ${req.params.id}`, () => {
         res.redirect("/")
-    })
-
-
-
-
-
-})
-
+    });
+});
 
 module.exports = router;
