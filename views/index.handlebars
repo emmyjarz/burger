@@ -6,15 +6,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-2 col-md-2 col-xs-2"></div>
         {{!-- selectAll --}}
-        <div class="col-lg-3 col-md-3 col-xs-3">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             {{#each burgers}} {{#unless this.devoured}}
             <button type="button" class="btn btn-secondary btn-lg btn-block">{{this.id}}. {{this.name}}</button> {{/unless}}
             {{/each}}
         </div>
         {{!-- updateOne --}}
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
             {{#each burgers}} {{#unless this.devoured}}
             <form id="form" action="/{{this.id}}?_method=PUT" method="POST">
                 <button type="submit" name="devoured" value="true" class="btn btn-success btn-lg btn-block">Devour {{this.id}}</button>
@@ -22,13 +21,12 @@
             {{/unless}} {{/each}}
         </div>
         {{!-- show after devour --}}
-        <div class="col-lg-3 col-md-3 col-xs-3">
-
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             {{#each burgers}} {{#if this.devoured}}
             <button type="button" class="btn btn-secondary btn-lg btn-block">{{this.id}}. {{this.name}}</button> {{/if}}
             {{/each}}
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+
     </div>
 
     {{!-- input new burger --}}
@@ -42,5 +40,5 @@
         </form>
         <p>Enter a burger you want to eat Click the "Submit" button</p>
     </div>
-    
+
 </div>
