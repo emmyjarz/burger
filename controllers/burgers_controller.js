@@ -7,20 +7,22 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", (req, res) => {
+router.get("/", function (req, res) {
+    res.redirect("/burgers");
+});
+router.get("/burgers", (req, res) => {
     burger.selectAll(data => {
         res.render("index", { burgers: data });
     });
 });
-
-router.post("/", (req, res) => {
+router.post("/burgers/new", (req, res) => {
     burger.insertOne(["name", "date"], [req.body.name, new Date()], () => {
-        res.redirect("/");
+        res.redirect("/burgers");
     });
 });
-router.put("/:id", (req, res) => {
+router.put("/burgers/:id", (req, res) => {
     burger.updateOne(`devoured = ${req.body.devoured}`, `id = ${req.params.id}`, () => {
-        res.redirect("/")
+        res.redirect("/burgers")
     });
 });
 

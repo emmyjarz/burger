@@ -15,7 +15,7 @@
         {{!-- updateOne --}}
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
             {{#each burgers}} {{#unless this.devoured}}
-            <form id="form" action="/{{this.id}}?_method=PUT" method="POST">
+            <form id="form" action="/burgers/{{this.id}}?_method=PUT" method="POST">
                 <button type="submit" name="devoured" value="true" class="btn btn-success btn-lg btn-block">Devour {{this.id}}</button>
             </form>
             {{/unless}} {{/each}}
@@ -31,7 +31,7 @@
 
     {{!-- input new burger --}}
     <div id="burgerInput" class="row">
-        <form class="form-group" action="/" method="POST">
+        <form class="form-group" action="/burgers/new" method="POST">
             <div class="form-group">
                 <textarea name="name" cols="40" rows="5 "></textarea>
             </div>
